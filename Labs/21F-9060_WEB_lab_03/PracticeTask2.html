@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Validation</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            margin: 0 20px;
+        }
+
+        form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Sign In</h2>
+            <form id="signInForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                    <span class="error" id="usernameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <span class="error" id="passwordError"></span>
+                </div>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <form id="signUpForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName">
+                    <span class="error" id="fullNameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <span class="error" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="passwordSignup">Password:</label>
+                    <input type="password" id="passwordSignup" name="passwordSignup">
+                    <span class="error" id="passwordSignupError"></span>
+                </div>
+                <!-- Add more fields for demonstration -->
+                <!-- <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber">
+                    <span class="error" id="phoneNumberError"></span>
+                </div> -->
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('signInForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // Validation
+            document.getElementById('usernameError').textContent = username ? '' : 'Username is required.';
+            document.getElementById('passwordError').textContent = password ? '' : 'Password is required.';
+
+            // Perform sign in if no errors
+            if (username && password) {
+                // Your sign-in logic here
+                console.log('Signing in...');
+            }
+        });
+
+        document.getElementById('signUpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const passwordSignup = document.getElementById('passwordSignup').value.trim();
+
+            // Validation
+            document.getElementById('fullNameError').textContent = fullName ? '' : 'Full Name is required.';
+            document.getElementById('emailError').textContent = validateEmail(email) ? '' : 'Enter a valid email address.';
+            document.getElementById('passwordSignupError').textContent = validatePassword(passwordSignup) ? '' : 'Password must contain at least one special and one numeric character.';
+
+            // Perform sign up if no errors
+            if (fullName && email && passwordSignup && validateEmail(email) && validatePassword(passwordSignup)) {
+                // Your sign-up logic here
+                console.log('Signing up...');
+            }
+        });
+
+        // Function to validate email format
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Function to validate password format
+        function validatePassword(password) {
+            const passwordRegex = /^(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$/;
+            return passwordRegex.test(password);
+        }
+    </script>
+</body>
+</html>
