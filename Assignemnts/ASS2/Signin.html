@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: lightblue;
+}
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.error {
+  color: red;
+}
+</style>
+</head>
+<body>
+
+<h2>Sign-In Form</h2>
+
+<form id="signInForm" onsubmit="return validateForm()">
+  <label for="username">Username*</label><br>
+  <input type="text" id="username" name="username" required><br>
+  <span id="usernameError" class="error"></span><br>
+  <label for="password">Password*</label><br>
+  <input type="password" id="password" name="password" required><br>
+  <span id="passwordError" class="error"></span><br>
+  <button type="submit">Sign In</button>
+</form>
+
+<script>
+function validateForm() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var usernameError = document.getElementById("usernameError");
+  var passwordError = document.getElementById("passwordError");
+  
+  // Reset error messages
+  usernameError.innerHTML = "";
+  passwordError.innerHTML = "";
+  
+  // Validate username
+  if (username.trim() === "") {
+    usernameError.innerHTML = "Username is required";
+    return false;
+  }
+  
+  // Validate password
+  if (password.trim() === "") {
+    passwordError.innerHTML = "Password is required";
+    return false;
+  }
+  
+  return true;
+}
+</script>
+
+</body>
+</html>

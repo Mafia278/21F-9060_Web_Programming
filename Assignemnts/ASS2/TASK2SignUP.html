@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: lightblue;
+}
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+input[type=text], input[type=password], input[type=email], input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.error {
+  color: red;
+}
+</style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="registrationForm" onsubmit="return validateForm()">
+  <label for="name">Name*</label><br>
+  <input type="text" id="name" name="name" required><br>
+  <label for="username">Username*</label><br>
+  <input type="text" id="username" name="username" required><br>
+  <label for="password">Password*</label><br>
+  <input type="password" id="password" name="password" required><br>
+  <label for="number">Number*</label><br>
+  <input type="number" id="number" name="number" required><br>
+  <label for="email">Email Id*</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <span id="error-message" class="error"></span><br>
+  <button type="submit">Register</button>
+</form>
+
+<script>
+function validateForm() {
+  var name = document.getElementById("name").value;
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var number = document.getElementById("number").value;
+  var email = document.getElementById("email").value;
+  var errorMessage = document.getElementById("error-message");
+
+  // Validate name
+  if (name.trim() == "") {
+    errorMessage.innerHTML = "Please enter your name.";
+    return false;
+  }
+
+  // Validate username
+  if (username.trim() == "") {
+    errorMessage.innerHTML = "Please enter a username.";
+    return false;
+  }
+
+  // Validate password
+  if (password.trim() == "") {
+    errorMessage.innerHTML = "Please enter a password.";
+    return false;
+  }
+
+  // Validate number
+  if (isNaN(number) || number.trim() == "") {
+    errorMessage.innerHTML = "Please enter a valid number.";
+    return false;
+  }
+
+  // Validate email
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    errorMessage.innerHTML = "Please enter a valid email address.";
+    return false;
+  }
+
+  // Clear error message if all validations pass
+  errorMessage.innerHTML = "";
+  return true;
+}
+</script>
+
+</body>
+</html>
