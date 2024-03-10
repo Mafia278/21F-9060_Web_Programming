@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("img").toggle();
+        var text = $(this).text() == 'Hide' ? 'Show' : 'Hide';
+        $(this).text(text);
+    });
+});
+</script>
+</head>
+<body>
+
+<img src="C:\Users\muham\OneDrive\Pictures\Screenshots\Screenshot 2024-03-10 113041.png">
+<button>Hide</button>
+
+</body>
+</html>

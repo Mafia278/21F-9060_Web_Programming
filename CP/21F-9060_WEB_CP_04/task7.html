@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Counting Child Elements with jQuery</title>
+<script>
+$(document).ready(function(){
+    var paragraphCount = $("#selectedParagraphs p").length; // Renamed variable and added a more descriptive ID
+    alert("Number of 'p' elements inside 'selectedParagraphs': " + paragraphCount); // Adjusted alert message
+});
+</script>
+</head>
+<body>
+
+<div id="selectedParagraphs"> <!-- Adjusted ID name -->
+<p>Red</p>
+<p>White</p>
+<p>Green</p>
+<p>Black</p>
+<p>Blue</p>
+<p>Orange</p>
+</div>
+
+</body>
+</html>
