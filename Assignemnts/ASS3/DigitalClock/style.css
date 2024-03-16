@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+  }
+  
+  #clock {
+    display: flex;
+    font-family: Arial, sans-serif;
+  }
+  
+  #hours, #minutes, #seconds, #period {
+    padding: 10px;
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+  
+  #hours { background-color: #1abc9c; }
+  #minutes { background-color: #3498db; }
+  #seconds { background-color: #e74c3c; }
+  #period { background-color: #f39c12; }
+  
